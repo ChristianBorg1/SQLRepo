@@ -156,5 +156,17 @@ GO
 /* AND the other row in table3 */ 
 
 
+DROP TABLE [IT].[table3];
+GO
+
+DROP TABLE [IT].[table1];
+GO
+
+DROP TABLE [IT].[table2];
+GO
+
+
+
+
 
 
