@@ -67,6 +67,10 @@ GO
 SELECT * FROM [IT].[Projects];
 GO
 
+SELECT * FROM [IT].[Titles]
+WHERE title_id = 2 OR title_id = 5;
+GO
+
 
 
 
