@@ -1,4 +1,4 @@
-CREATE DATABASE [ChristianPorfolio];
+CREATE DATABASE [ChristianPortfolio];
 GO
 
 /*
@@ -8,3 +8,8 @@ GO
 CREATE SCHEMA [IT];
 GO
 */
+
+
+
+
+
