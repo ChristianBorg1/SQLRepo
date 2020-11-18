@@ -71,6 +71,8 @@ SELECT * FROM [IT].[Titles]
 WHERE title_id = 2 OR title_id = 5;
 GO
 
-
+SELECT description_content
+FROM [IT].[Descriptions]
+GO
 
 
