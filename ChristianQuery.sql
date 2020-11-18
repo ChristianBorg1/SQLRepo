@@ -58,6 +58,14 @@ VALUES
 	(6,6);
 GO
 
+SELECT * FROM [IT].[Titles];
+GO
+
+SELECT * FROM [IT].[Descriptions];
+GO
+
+SELECT * FROM [IT].[Projects];
+GO
 
 
 
