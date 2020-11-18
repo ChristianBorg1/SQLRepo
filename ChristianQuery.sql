@@ -75,4 +75,86 @@ SELECT description_content
 FROM [IT].[Descriptions]
 GO
 
+CREATE TABLE [IT].[table1](
+	title_id INT PRIMARY KEY,
+	title NVARCHAR(200) 
+);
+GO
+
+CREATE TABLE [IT].[table2](
+	description_id INT PRIMARY KEY,
+	description_content NVARCHAR(MAX)
+);
+GO
+
+/* 1, 2, 3 */
+INSERT INTO [IT].[table1] (title_id,title)
+VALUES (
+	(SELECT title_id FROM [IT].[Titles] WHERE title_id = 3), 
+	(SELECT title FROM [IT].[Titles] WHERE title_id = 3)
+);
+GO
+
+/* 1, 2, 4 */
+INSERT INTO [IT].[table2] (description_id,description_content)
+VALUES (
+	(SELECT description_id FROM [IT].[Descriptions] WHERE description_id = 4), 
+	(SELECT description_content FROM [IT].[Descriptions] WHERE description_id = 4)
+);
+GO
+
+CREATE TABLE [IT].[table3](
+	project_id INT PRIMARY KEY,
+	title_id INT 
+		CONSTRAINT fk_table1 FOREIGN KEY (title_id) REFERENCES [IT].[table1],
+	description_id INT 
+		CONSTRAINT fk_table2 FOREIGN KEY (description_id) REFERENCES [IT].[table2]
+);
+GO
+
+INSERT INTO [IT].[table3]
+VALUES
+	(1,1,1),
+	(2,2,2),
+	(5,NULL,NULL)
+GO
+
+SELECT *
+FROM [IT].[table3]
+LEFT OUTER JOIN [IT].[table1] ON [IT].[table3].title_id = [IT].[table1].title_id;
+GO
+/* returns the first 2 rows which are common in both table1 and table3 */ 
+/* AND the other row in table3 */
+
+
+SELECT *
+FROM [IT].[table3]
+RIGHT OUTER JOIN [IT].[table1] ON [IT].[table3].title_id = [IT].[table1].title_id;
+GO
+/* returns the first 2 rows which are common in both table1 and table3 */ 
+/* AND the other row in table1 */
+
+SELECT *
+FROM [IT].[table3]
+INNER JOIN [IT].[table1] ON [IT].[table3].title_id = [IT].[table1].title_id;
+GO
+/* returns ONLY the first 2 rows which are common in both table1 and table3 */
+
+SELECT *
+FROM [IT].[table2]
+LEFT OUTER JOIN [IT].[table3] ON [IT].[table2].description_id = [IT].[table3].description_id;
+GO
+/* returns the first 2 rows which are common in both table2 and table3 */ 
+/* AND the other row in table2 */ 
+
+
+SELECT *
+FROM [IT].[table2]
+RIGHT OUTER JOIN [IT].[table3] ON [IT].[table2].description_id = [IT].[table3].description_id;
+GO
+/* returns the first 2 rows which are common in both table2 and table3 */ 
+/* AND the other row in table3 */ 
+
+
+
 
