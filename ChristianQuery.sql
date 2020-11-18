@@ -165,8 +165,30 @@ GO
 DROP TABLE [IT].[table2];
 GO
 
+SELECT project_id, title, description_content
+FROM [IT].[Projects]
+INNER JOIN [IT].[Titles] ON [IT].[Projects].title_id = [IT].[Titles].title_id
+INNER JOIN [IT].[Descriptions] ON [IT].[Projects].description_id = [IT].[Descriptions].description_id;
+GO
 
+CREATE FUNCTION [IT].udf_SelectDescription(@title NVARCHAR(200))
+RETURNS NVARCHAR(MAX)
+AS
+BEGIN
 
+	RETURN (
+		SELECT description_content FROM [IT].[Projects] 
+			INNER JOIN [IT].[Titles] ON [IT].[Projects].title_id = [IT].[Titles].title_id
+			INNER JOIN [IT].[Descriptions] ON [IT].[Projects].description_id = [IT].[Descriptions].description_id
+		WHERE title = @title
+	)
+END;
+GO
 
+SELECT [IT].udf_SelectDescription('Crossword Puzzle');
+GO
+
+DROP FUNCTION [IT].udf_SelectDescription;
+GO
 
 
