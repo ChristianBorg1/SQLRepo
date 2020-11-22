@@ -229,6 +229,13 @@ GO
 EXECUTE [IT].usp_Procedure 'Directions For Visually Impaired';
 GO
 
+UPDATE [IT].[Descriptions]
+	SET description_content = 'A game which tests the ABILITY OF THE USER to not blink an eye three times or open the mouth in a whole minute. '
+	WHERE description_id = 6;
+GO
+
+
+
 
 
 
