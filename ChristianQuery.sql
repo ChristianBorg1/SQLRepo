@@ -44,7 +44,9 @@ VALUES
 	('Movie Ratings'),
 	('Crossword Puzzle'),
 	('Word Search Puzzle'),
-	('Automated Passport Photo Taking');
+	('One Minute'),
+	('SQL Repository'),
+	('Interact With Database');
 GO
 
 INSERT INTO [IT].[Descriptions] (description_content)
@@ -54,7 +56,9 @@ VALUES
 	('A web application which predicts the movie ratings by a particular occupation (e.g. teacher, doctor) for different genres (e.g. comedy, horror).'),
 	('An interactive crossword puzzle.'),
 	('An interactive word search puzzle.'),
-	('An AI which captures passport photos automatically with computer vision.');
+	('A game which tests the user`s ability to not blink an eye three times or open the mouth in a whole minute.'),
+	('A Git repository with a number of SQL statement commits.'),
+	('An ASP .NET application which allows the users to view and modify a database. ');
 GO
 
 INSERT INTO [IT].[Projects] (title_id, description_id)
@@ -64,7 +68,9 @@ VALUES
 	(3,3),
 	(4,4),
 	(5,5),
-	(6,6);
+	(6,6),
+	(7,7),
+	(8,8);
 GO
 
 SELECT * FROM [IT].[Titles];
